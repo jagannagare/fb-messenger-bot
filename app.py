@@ -54,11 +54,11 @@ def webhook():
 
 
 def send_message(recipient_id, message_text):
-
+	PAGE_ACCESS_TOKEN='EAADACGP211UBAMuaVO0TwGzcDsgGqvvqkogRK0hV3nrPmGjrNiKm5YtRyzSLKSZBOmxhHm7nivFBAqp9nZAiPrh3HZBF4YTnlQbZChjAEsxHeUGAu2R8NwiebHwePtIFB3qzZAfKULqi62K2AZCgAdaXZATOmPdZAjyH8H5WfMuH0QZDZD'
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
 
     params = {
-        "access_token": os.environ["PAGE_ACCESS_TOKEN"]
+        "access_token": PAGE_ACCESS_TOKEN
     }
     headers = {
         "Content-Type": "application/json"
