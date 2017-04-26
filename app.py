@@ -54,7 +54,7 @@ def webhook():
 
 
 def send_message(recipient_id, message_text):
-	PAGE_ACCESS_TOKEN='EAADACGP211UBAJWebGCdrGVnzZBidBiEKA8MzyZAWtxKu0GP3752do84o4XqBOOPAMCxR5CpuOfzPCqWyil2jK2p4Vm81UjZALXxwsd0Tao0FZAkgiO8f5dR1hTsMASUcgJZBdv3gjAkbxlY03GenatNAAho26oOvT28yZA84trgZDZD'
+	PAGE_ACCESS_TOKEN='EAAFisxByZB0sBAEEOsTlaB8xwXq7wEraoZCuzz609rnd3fEwKUBSTy7TkiOdeSXO9ZBwv2vs7ZALkX0TJK4QWpJUqNf1ZBk7gEf8zNdrFFKNvW0e0byKpnHYoHelfzSJA87qNKd1HThOxhB0OVTFUr4KOSnzAxftTci6bnZCi59AZDZD'
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
 
     params = {
