@@ -54,22 +54,64 @@ def webhook():
 
 
 def send_message(recipient_id, message_text):
-	PAGE_ACCESS_TOKEN='EAAFisxByZB0sBAEEOsTlaB8xwXq7wEraoZCuzz609rnd3fEwKUBSTy7TkiOdeSXO9ZBwv2vs7ZALkX0TJK4QWpJUqNf1ZBk7gEf8zNdrFFKNvW0e0byKpnHYoHelfzSJA87qNKd1HThOxhB0OVTFUr4KOSnzAxftTci6bnZCi59AZDZD'
+	
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
 
     params = {
-        "access_token": PAGE_ACCESS_TOKEN
+        "access_token": os.environ["PAGE_ACCESS_TOKEN"]
     }
     headers = {
         "Content-Type": "application/json"
     }
+#    data = json.dumps({
+#        "recipient": {
+#            "id": recipient_id
+#        },
+#        "message": {
+#            "text": message_text
+#        }
+#    })
     data = json.dumps({
         "recipient": {
             "id": recipient_id
         },
         "message": {
-            "text": message_text
+		"attachment": {
+        "type": "template",
+        "payload": {
+          "template_type": "generic",
+          "elements": [{
+            "title": "rift",
+            "subtitle": "Next-generation virtual reality",
+            "item_url": "https://www.oculus.com/en-us/rift/",               
+            "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+            "buttons": [{
+              "type": "web_url",
+              "url": "https://www.oculus.com/en-us/rift/",
+              "title": "Open Web URL"
+            }, {
+              "type": "postback",
+              "title": "Call Postback",
+              "payload": "Payload for first bubble",
+            }],
+          }, {
+            "title": "touch",
+            "subtitle": "Your Hands, Now in VR",
+            "item_url": "https://www.oculus.com/en-us/touch/",               
+            "image_url": "http://messengerdemo.parseapp.com/img/touch.png",
+            "buttons": [{
+              "type": "web_url",
+              "url": "https://www.oculus.com/en-us/touch/",
+              "title": "Open Web URL"
+            }, {
+              "type": "postback",
+              "title": "Call Postback",
+              "payload": "Payload for second bubble",
+            }]
+          }]
         }
+      }
+	}  
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
     if r.status_code != 200:
